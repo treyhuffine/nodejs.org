@@ -15,11 +15,12 @@ title: Installing Node.js via package manager
 * [FreeBSD](#freebsd)
 * [Gentoo](#gentoo)
 * [IBM i](#ibm-i)
+* [macOS](#macos)
 * [NetBSD](#netbsd)
+* [Nodenv](#nodenv)
 * [nvm](#nvm)
 * [OpenBSD](#openbsd)
 * [openSUSE and SLE](#opensuse-and-sle)
-* [macOS](#macos)
 * [SmartOS and illumos](#smartos-and-illumos)
 * [Solus](#solus)
 * [Void Linux](#void-linux)
@@ -49,7 +50,7 @@ pacman -S nodejs npm
 
 ## Debian and Ubuntu based Linux distributions, Enterprise Linux/Fedora and Snap packages
 
-[Official Node.js binary distributions](https://github.com/nodesource/distributions/blob/master/README.md) are provided by NodeSource.
+[Node.js binary distributions](https://github.com/nodesource/distributions/blob/master/README.md) are available from NodeSource.
 
 ## FreeBSD
 
@@ -87,6 +88,47 @@ yum install nodejs12
 
 Node.js can also be installed with the IBM i Access Client Solutions product. See [this support document](http://www-01.ibm.com/support/docview.wss?uid=nas8N1022619) for more details
 
+## macOS
+
+Download the [macOS Installer](https://nodejs.org/en/#home-downloadhead) directly from the [nodejs.org](https://nodejs.org/) web site.
+
+_If you want to download the package with bash:_
+
+```bash
+curl "https://nodejs.org/dist/latest/node-${VERSION:-$(wget -qO- https://nodejs.org/dist/latest/ | sed -nE 's|.*>node-(.*)\.pkg</a>.*|\1|p')}.pkg" > "$HOME/Downloads/node-latest.pkg" && sudo installer -store -pkg "$HOME/Downloads/node-latest.pkg" -target "/"
+```
+
+### Alternatives
+
+Using **[Homebrew](https://brew.sh/)**:
+
+```bash
+brew install node
+```
+
+Using **[MacPorts](https://www.macports.org/)**:
+
+```bash
+port install nodejs<major version>
+
+# Example
+port install nodejs7
+```
+
+Using **[pkgsrc](https://pkgsrc.joyent.com/install-on-osx/)**:
+
+Install the binary package:
+
+```bash
+pkgin -y install nodejs
+```
+
+Or build manually from pkgsrc:
+
+```bash
+cd pkgsrc/lang/nodejs && bmake install
+```
+
 ## NetBSD
 
 Node.js is available in the pkgsrc tree:
@@ -101,10 +143,16 @@ Or install a binary package (if available for your platform) using pkgin:
 pkgin -y install nodejs
 ```
 
+## Nodenv
+
+`nodenv` is a lightweight node version manager, similar to `nvm`. It's simple and predictable. A rich plugin ecosystem lets you tailor it to suit your needs. Use `nodenv` to pick a Node version for your application and guarantee that your development environment matches production. 
+
+Nodenv installation instructions are maintained [on its Github page](https://github.com/nodenv/nodenv#installation). Please visit that page to ensure you're following the latest version of the installation steps.
+
 ## nvm
 Node Version Manager is a bash script used to manage multiple released Node.js versions. It allows
 you to perform operations like install, uninstall, switch version, etc.
-To install nvm, use this [install script](https://github.com/creationix/nvm#install-script).
+To install nvm, use this [install script](https://github.com/nvm-sh/nvm#install--update-script).
 
 On Unix / OS X systems Node.js built from source can be installed using
 [nvm](https://github.com/creationix/nvm) by installing into the location that nvm expects:
@@ -158,50 +206,9 @@ For example, to install Node.js 4.x on openSUSE Leap 42.2, run the following as 
 zypper install nodejs4
 ```
 
-## macOS
-
-Simply download the [macOS Installer](https://nodejs.org/en/#home-downloadhead) directly from the [nodejs.org](https://nodejs.org/) web site.
-
-_If you want to download the package with bash:_
-
-```bash
-curl "https://nodejs.org/dist/latest/node-${VERSION:-$(wget -qO- https://nodejs.org/dist/latest/ | sed -nE 's|.*>node-(.*)\.pkg</a>.*|\1|p')}.pkg" > "$HOME/Downloads/node-latest.pkg" && sudo installer -store -pkg "$HOME/Downloads/node-latest.pkg" -target "/"
-```
-
-### Alternatives
-
-Using **[Homebrew](https://brew.sh/)**:
-
-```bash
-brew install node
-```
-
-Using **[MacPorts](https://www.macports.org/)**:
-
-```bash
-port install nodejs<major version>
-
-# Example
-port install nodejs7
-```
-
-Using **[pkgsrc](https://pkgsrc.joyent.com/install-on-osx/)**:
-
-Install the binary package:
-
-```bash
-pkgin -y install nodejs
-```
-
-Or build manually from pkgsrc:
-
-```bash
-cd pkgsrc/lang/nodejs && bmake install
-```
-
 ## SmartOS and illumos
 
-SmartOS images come with pkgsrc pre-installed.  On other illumos distributions, first install **[pkgsrc](https://pkgsrc.joyent.com/install-on-illumos/)**, then you may install the binary package as normal:
+SmartOS images come with pkgsrc pre-installed. On other illumos distributions, first install **[pkgsrc](https://pkgsrc.joyent.com/install-on-illumos/)**, then you may install the binary package as normal:
 
 ```bash
 pkgin -y install nodejs
@@ -215,7 +222,7 @@ cd pkgsrc/lang/nodejs && bmake install
 
 ## Solus
 
-Solus provides node.js in its main repository.
+Solus provides Node.js in its main repository.
 
 ```bash
 sudo eopkg install nodejs
@@ -223,7 +230,7 @@ sudo eopkg install nodejs
 
 ## Void Linux
 
-Void Linux ships node.js stable in the main repository.
+Void Linux ships Node.js stable in the main repository.
 
 ```bash
 xbps-install -Sy nodejs
@@ -231,7 +238,7 @@ xbps-install -Sy nodejs
 
 ## Windows
 
-Simply download the [Windows Installer](https://nodejs.org/en/#home-downloadhead) directly from the [nodejs.org](https://nodejs.org/) web site.
+Download the [Windows Installer](https://nodejs.org/en/#home-downloadhead) directly from the [nodejs.org](https://nodejs.org/) web site.
 
 ### Alternatives
 
